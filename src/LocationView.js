@@ -25,6 +25,7 @@ export default class LocationView extends React.Component {
     actionButtonStyle: ViewPropTypes.style,
     actionTextStyle: Text.propTypes.style,
     actionText: PropTypes.string,
+    mapType: PropTypes.string,
     onLocationSelect: PropTypes.func,
     debounceDuration: PropTypes.number,
     components: PropTypes.arrayOf(PropTypes.string),
@@ -36,6 +37,7 @@ export default class LocationView extends React.Component {
   static defaultProps = {
     markerColor: 'black',
     actionText: 'DONE',
+    mapType : 'standard' ,
     onLocationSelect: () => ({}),
     debounceDuration: 300,
     components: [],
@@ -139,6 +141,7 @@ export default class LocationView extends React.Component {
           style={styles.mapView}
           region={this.state.region}
           showsMyLocationButton={true}
+          mapType={this.props.mapType}
           showsUserLocation={false}
           onPress={({ nativeEvent }) => this._setRegion(nativeEvent.coordinate)}
           onRegionChange={this._onMapRegionChange}
